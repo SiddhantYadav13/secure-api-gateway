@@ -1,0 +1,20 @@
+# ============================================================================
+# Python dependencies for the Secure API Gateway backend.
+# Pinned versions => identical installs everywhere (local, teammate, Docker).
+# ============================================================================
+
+# --- Web server foundation ---
+Flask==3.1.0             # web framework
+python-dotenv==1.0.1     # load config/secrets from .env
+flask-cors==5.0.0        # allow the React frontend to call this API
+
+# --- Database (ORM) ---
+Flask-SQLAlchemy==3.1.1  # SQLAlchemy integration for Flask (models -> tables)
+PyMySQL==1.1.1           # MySQL driver (used when we switch from SQLite)
+
+# --- Authentication ---
+Flask-JWT-Extended==4.7.1  # JWT creation/verification, protected routes
+bcrypt==4.2.1              # secure password hashing
+
+# --- Cryptography engine ---
+pycryptodome==3.21.0     # AES-256, RSA-2048, digital signatures (PKCS1_PSS)

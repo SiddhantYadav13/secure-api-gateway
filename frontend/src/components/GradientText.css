@@ -1,0 +1,37 @@
+/* GradientText — minimal styling.
+   The animated linear-gradient is applied inline (background-image / size /
+   position) by the component; here we just clip that gradient to the text
+   shape and lay things out. No pill/badge chrome, so it works as a wordmark. */
+
+.animated-gradient-text {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.animated-gradient-text.with-border {
+  border-radius: 1.25rem;
+}
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.text-content {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  /* Paint the gradient through the letter shapes only. */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  /* Just a whisper of a dark edge for legibility on the aurora — no glow.
+     A still, glow-free gradient reads classy rather than cheap. */
+  filter: drop-shadow(0 1px 1.5px rgba(2, 6, 23, 0.5));
+}
