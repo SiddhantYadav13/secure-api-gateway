@@ -18,3 +18,4 @@ bcrypt==4.2.1              # secure password hashing
 
 # --- Cryptography engine ---
 pycryptodome==3.21.0     # AES-256, RSA-2048, digital signatures (PKCS1_PSS)
+gunicorn==23.0.0
