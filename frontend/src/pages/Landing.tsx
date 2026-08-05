@@ -13,6 +13,7 @@ import {
 import Aurora from "../components/Aurora";
 import GradientText from "../components/GradientText";
 import DecryptedText from "../components/DecryptedText";
+import RequestPipeline from "../components/RequestPipeline";
 
 const features = [
   {
@@ -81,7 +82,10 @@ export default function Landing() {
       </nav>
 
       {/* Hero */}
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
+      <div className="flex-1 flex flex-col justify-center px-6 md:px-12 py-16 w-full max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: copy */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -140,9 +144,16 @@ export default function Landing() {
             Create account
           </Link>
         </motion.div>
+          </div>
+
+          {/* Right: animated request pipeline */}
+          <div className="flex justify-center lg:justify-end">
+            <RequestPipeline />
+          </div>
+        </div>
 
         {/* Feature cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-20 max-w-6xl w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-20 w-full">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
