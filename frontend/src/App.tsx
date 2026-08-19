@@ -22,6 +22,7 @@ import Logs from "./pages/Logs";
 import RiskCenter from "./pages/RiskCenter";
 import AdminConsole from "./pages/AdminConsole";
 import Settings from "./pages/Settings";
+import ApiDocs from "./pages/ApiDocs";
 
 export default function App() {
   const location = useLocation();
@@ -68,6 +69,7 @@ export default function App() {
           <Route path="attack-simulator" element={<AttackSimulator />} />
           <Route path="logs" element={<Logs />} />
           <Route path="risk" element={<RiskCenter />} />
+          <Route path="docs" element={<ApiDocs />} />
           <Route
             path="admin"
             element={
