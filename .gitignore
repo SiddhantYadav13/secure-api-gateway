@@ -28,3 +28,7 @@ build/
 
 # Logs
 *.log
+# Local databases (regenerated on run — never commit)
+*.db
+*.sqlite3
+backend/instance/
