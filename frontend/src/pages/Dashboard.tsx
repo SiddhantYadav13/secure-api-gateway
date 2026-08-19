@@ -29,6 +29,7 @@ import {
 } from "recharts";
 import api from "../services/api";
 import { Card, StatCard, Skeleton, Badge, statusTone } from "../components/ui";
+import SecurityHealthScore from "../components/SecurityHealthScore";
 import type { DashboardSummary, SecurityEvent } from "../types";
 
 interface TimelinePoint {
@@ -233,23 +234,7 @@ export default function Dashboard() {
         </Card>
 
         <div className="space-y-4">
-          <Card delay={0.25}>
-            <h3 className="font-semibold text-white mb-4">Security Status</h3>
-            <div className="space-y-2.5">
-              {status &&
-                Object.entries(status).map(([key, val]) => (
-                  <div
-                    key={key}
-                    className="flex items-center justify-between text-sm"
-                  >
-                    <span className="text-slate-400 capitalize">
-                      {key.replace(/_/g, " ")}
-                    </span>
-                    <Badge tone={statusTone(val)}>{val}</Badge>
-                  </div>
-                ))}
-            </div>
-          </Card>
+          <SecurityHealthScore status={status} delay={0.25} />
 
           <Card delay={0.3}>
             <h3 className="font-semibold text-white mb-3">Quick Actions</h3>

@@ -32,8 +32,14 @@ export default function Topbar() {
         </GradientText>
       </div>
 
-      <div className="hidden md:block text-sm text-slate-400">
-        Security Operations Console
+      <div className="hidden md:flex items-center gap-2.5">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-60 animate-ping" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+        </span>
+        <span className="text-sm font-medium tracking-wide bg-gradient-to-r from-slate-200 to-violet-300 bg-clip-text text-transparent">
+          Security Operations Console
+        </span>
       </div>
 
       <div className="flex items-center gap-4">

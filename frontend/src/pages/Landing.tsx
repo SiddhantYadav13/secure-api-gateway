@@ -10,9 +10,10 @@ import {
   Activity,
   ArrowRight,
 } from "lucide-react";
-import Aurora from "../components/Aurora";
+import Topography from "../components/Topography";
 import GradientText from "../components/GradientText";
 import DecryptedText from "../components/DecryptedText";
+import RequestPipeline from "../components/RequestPipeline";
 
 const features = [
   {
@@ -44,15 +45,33 @@ const features = [
 export default function Landing() {
   return (
     <div className="min-h-screen flex flex-col relative">
-      {/* Animated aurora background (sits behind everything) */}
-      <div className="fixed inset-0 -z-10 pointer-events-none opacity-60">
-        <Aurora
-          colorStops={["#2563EB", "#6D28D9", "#7C3AED"]}
-          amplitude={1.0}
-          blend={0.6}
-          speed={0.5}
+      {/* Animated topographic background (sits behind everything) */}
+      <div className="fixed inset-0 -z-20 pointer-events-none opacity-70">
+        <Topography
+          lowColor="#3B82F6"
+          midColor="#8B5CF6"
+          highColor="#DDD6FE"
+          speed={0.3}
+          morphAmount={1.25}
+          bands={2.6}
+          thickness={0.01}
+          glow={0.3}
+          contrast={3.5}
+          brightness={1.05}
+          scale={1.0}
+          grain
+          grainIntensity={0.035}
+          mouseInteraction={false}
         />
       </div>
+      {/* Dark scrim so the bright contour field doesn't wash out the content */}
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(130% 100% at 50% 30%, rgba(11,17,32,0.35), rgba(11,17,32,0.82) 70%)",
+        }}
+      />
 
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 md:px-12 h-20">
@@ -81,7 +100,10 @@ export default function Landing() {
       </nav>
 
       {/* Hero */}
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 py-16">
+      <div className="flex-1 flex flex-col justify-center px-6 md:px-12 py-16 w-full max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: copy */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -140,9 +162,16 @@ export default function Landing() {
             Create account
           </Link>
         </motion.div>
+          </div>
+
+          {/* Right: animated request pipeline */}
+          <div className="flex justify-center lg:justify-end">
+            <RequestPipeline />
+          </div>
+        </div>
 
         {/* Feature cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-20 max-w-6xl w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-20 w-full">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (

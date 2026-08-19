@@ -9,7 +9,7 @@ import { useAuth } from "../context/AuthContext";
 import { Spinner } from "../components/ui";
 import GradientText from "../components/GradientText";
 import BorderGlow from "../components/BorderGlow";
-import Aurora from "../components/Aurora";
+import Topography from "../components/Topography";
 
 interface FormData {
   username: string;
@@ -44,15 +44,33 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6 py-12">
-      {/* Animated aurora background (sits behind everything) */}
-      <div className="fixed inset-0 -z-10 pointer-events-none opacity-50">
-        <Aurora
-          colorStops={["#2563EB", "#6D28D9", "#7C3AED"]}
-          amplitude={1.0}
-          blend={0.6}
-          speed={0.5}
+      {/* Animated topographic background (sits behind everything) */}
+      <div className="fixed inset-0 -z-20 pointer-events-none opacity-70">
+        <Topography
+          lowColor="#3B82F6"
+          midColor="#8B5CF6"
+          highColor="#DDD6FE"
+          speed={0.3}
+          morphAmount={1.25}
+          bands={2.6}
+          thickness={0.01}
+          glow={0.3}
+          contrast={3.5}
+          brightness={1.05}
+          scale={1.0}
+          grain
+          grainIntensity={0.035}
+          mouseInteraction={false}
         />
       </div>
+      {/* Dark scrim so the bright contour field doesn't wash out the content */}
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(130% 100% at 50% 30%, rgba(11,17,32,0.35), rgba(11,17,32,0.82) 70%)",
+        }}
+      />
 
       <BorderGlow
         className="w-full max-w-md"
